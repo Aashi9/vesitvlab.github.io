@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!--<script type="text/javascript">
+    alert("Make sure to enter only 20 Length entries from Slider");
+    </script> -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="sty.css">
+    <script src="js_for_b.js"></script>
+
+    <title>Experiment No: 1</title>   
+</head>
+<body>
+    <div class="container">
+        <center><img src="ep1b.png" width="70%" height="30%"></center>
+
+        <button class="btn"><a style="text-decoration: none;"href="sim.html"><b>Back</b></a></button>
+        
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+
+            <table border="4" class="t1" style="margin-left: 10%; width:100%;height: auto; margin-top: 6%;border:3px solid #000000">
+                <thead>
+                    <tr>
+                        <th><center>LENGTH</center></th>
+                        <td><input type="range" name="n0" id="n0" min="500" max="10000" step="500" oninput="text2.value = (n0.value)/1000" class="slider"><br>
+                        <center><input type="text" name="charas" maxlength="4" size="4" id="text2"> km</center></td>
+                    </tr> 
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><center>Pin</center></th>
+                        <td><center><b>1 mW<b></center></td>
+                    </tr>
+
+                    <tr>
+                        <th><center>Attenuation</center></th>
+                        <td><center><b>0.2 db/km<b></center></td>
+                    </tr>
+
+                    <tr>
+                        <th><center>WAVELENGTH</center></th>
+                        <td><center><b>1550 nm<b></center></td>
+                    </tr>
+
+                    <tr>
+                        <th><center>Pout(W)</center></th>
+                        <td><center><output type="text" name="charas" maxlength="4" size="4" id="pulse"></output></center></td>
+                    </tr>
+
+                    <tr id="btna">
+                        <td colspan="2">
+                            <center><button style="margin: 0.5%;" onclick= "myFunction();AddRow();">Calculate</button></center>
+                        </td>
+                        <!-- <td colspan="2"><input class="cal-but" style=" margin-left: 4%; margin-top: 1%; margin-bottom: 1%;" type="button" name="button" id="btn" value="Calculate" onclick="myfunction();AddRow();updateChart();"></td> -->
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <center><button style="margin: 0.5%;" onclick="updateChart()">Plot</button></center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <center><button style="margin: 0.5%;" value="Reset" onclick="ResetRow();">Reset</button></center>
+                        </td>
+                    </tr>
+            
+                </tbody>
+            </table>
+
+        <div id="Container" class="artContainer" style="margin-left: 8%; margin-top: 5%;">
+                 <h5>Formula</h5>
+             
+               <img src="f4.jpg" width="350" height="50" style="border:2px solid #000000;margin-top: 5%;">
+            </div>
+
+        </div>
+
+        <div class="col-md-5" style="margin-left: 3%">
+            <div class="image">
+                <center><img src="eee.gif" width="80%" height="270" style="margin-top: 4%;border:2px solid #000000"></center>
+            </div>
+
+            <div>
+                <table border="3" id="abc" class="t2" style="margin-left: 30%; width: 40%; right: 0; border:2px solid #000000; margin-top: 2%; text-align: center;">
+                    <thead>
+                        <tr>
+                            <th><center>Length(km)</center></th>
+                            <th><center>Pout(W)</center></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>       
+        </div>
+
+        <div class="card-body col-md-4">
+            <canvas id="myChart" style="border:2px solid #000000 ;margin-right: 5%; width: 20%; height: 42%; margin-top: 0%;"></canvas>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    
+        <script src="js_for_b.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    </div>
+
+    <style type="text/css">
+    	.card-body {
+	        width: 30%;
+	        height: 40%;
+            margin-top: 0%;
+    	}
+    	.container .btn
+        {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color: white;
+            color: white;
+            font-size: 15px;
+            padding: 12px 24px;
+            border: 2px solid #000000;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .container .btn:hover 
+        {
+            background-color: lightgrey;
+        }
+
+        .container .btn1 {
+            position: absolute;
+            top: 5%;
+            right: 0.2%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color: white;
+            color: white;
+            font-size: 15px;
+            padding: 12px 24px;
+            border: 2px solid #000000;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .container .btn1:hover 
+        {
+            background-color: lightgrey;
+        }
+	</style>
+    
+</body>
+</html>
